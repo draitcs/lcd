@@ -1,0 +1,70 @@
+#include<iostream> 
+using namespace std; 
+class Product 
+{
+protected: 
+char model[25]; 
+int mfg_year; 
+int no_warranty_year; 
+public: 
+void get_product_data() 
+{
+cout<<"Enter the model number \n"; 
+cin>>model; 
+cout<<"Enter the year of manufacturing \n"; 
+cin>>mfg_year; 
+cout<<"Enter the number of warranty years \n"; 
+cin>>no_warranty_year; 
+}
+void show_product_data() 
+{
+cout<<" Model :"<<model<<"\n Manufacturing year :"<<mfg_year<<"\n No. of Warranty years :"<<no_warranty_year<<"\n"; 
+}
+};
+class Manufacturer 
+{
+protected: 
+char brand[25]; 
+char country[20]; 
+public: 
+void get_mfg_details(){
+cout<<"Enter the brand name : \n"; 
+cin>>brand; 
+cout<<"Enter the country name : \n"; 
+cin>>country; 
+}
+void show_mfg_details() 
+{
+cout<<" Brand :"<<brand<<"\n Country :"<<country<<"\n"; 
+}
+};
+class LCD_TV:public Manufacturer,public Product 
+{
+protected: 
+int inches; 
+float price; 
+public: 
+void get_data() 
+{
+get_mfg_details(); 
+get_product_data(); 
+cout<<"Enter the TV size : \n"; 
+cin>>inches; 
+cout<<"Enter the TV prize : \n"; 
+cin>>price; 
+}
+void show_data() 
+{
+show_mfg_details(); 
+show_product_data(); 
+cout<<"\n Diaognal Size :"<<inches; 
+cout<<"\n TV price :"<<price; 
+}
+};
+int main() 
+{
+LCD_TV TV; 
+TV.get_data(); 
+TV.show_data(); 
+return 0; 
+}
